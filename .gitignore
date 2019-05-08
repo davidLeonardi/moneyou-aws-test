@@ -1,0 +1,17 @@
+# package directories
+node_modules
+jspm_packages
+dist
+
+#logs
+yarn-error.log
+
+# Serverless directories
+.serverless
+.dynamodb
+
+# secrets
+secrets.json
+
+# config
+.vscode
