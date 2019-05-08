@@ -4,7 +4,23 @@
 
 ## 1. About
 
-### 1.1 Stack
+### 1.1 Concept
+
+This application serves the purpose of sending and managing emails to people.
+Recipients are generally called "Subscribers" and Newsletters/Emails are generally called "NewsItems".
+
+The idea is that in an email/message distribution environment, we want to create reusable messages which can be sent to multiple people. Once we send something, a log of the sent message is created, and can be retrieved for later use.
+
+The flow is as follows:
+
+- We can create a NewsItem, and the API responds with its ID.
+- We can send this NewsItem by its ID to a Subscriber. A new subscriber will be created uniquely, and a log of the message being sent will be recorded along with a timestamp. The API will respond with the Subscriber ID.
+- We can then retrieve which NewsItems have been sent to a given subscriber, by email, by requesting this from the API. It will respond with a list of messages that have been sent.
+
+In this implementation multiple recipients are not implemented, but could be so with ease.
+Furthermore, Unit tests are not implemented, but could be so with Mocks as well as with Mocha/Chai.
+
+### 1.2 Stack
 
 As of now we use the following frameworks/libraries:
 
