@@ -51,7 +51,11 @@ serverless offline
 
 ### DynamoDB
 
-We use DynamoDB (via AWS) to persist data
+We use DynamoDB (via AWS) to persist data.
+
+DynamoDb uses two tables, `NewsItems` and `Subscribers`.
+The table schemas are defined via the DynamoDbMapper type definitions in the services/dynamodb/mapper folder.
+The `Subscribers` table is queried by email as well, when we want to retrieve a subscriber by his email address. As this is not a primary key, a Secondary Index is defined in the `serverless.yml` definition, and this all gets set up automatically once we deploy to AWS.
 
 Install:
 
