@@ -22,12 +22,13 @@ Furthermore, Unit tests are not implemented, but could be so with Mocks as well 
 
 ### 1.2 Stack
 
-As of now we use the following frameworks/libraries:
+As of now we use the following frameworks/libraries/platforms:
 
 - aws-sdk
 - webpack
 - babel
 - yarn
+- DynamoDb
 
 ## 2. Pre-requisites
 
@@ -90,9 +91,29 @@ Migrate the db:
 
 ### 3.3 API endpoints
 
+#### Create a new message to be sent to someone later
+
+POST /newsItem/create
+
+##### Parameters
+
+- content {String} The textual content of the email we want to send
+
+```JSON
+{"content": "Let's still be in touch"}
+```
+
+Responds with the NewsItem ID
+
 #### Send a new NewsItem to a given recipient
 
 POST /email/send
+
+##### Parameters
+
+- email {String} The email address of the recipient
+- name {String} The name of the recipient
+- newsItemId {String} The UUID of the NewsItem we want to send
 
 ```JSON
 {
@@ -102,23 +123,15 @@ POST /email/send
 }
 ```
 
-Responds with a success code
-
-
-#### Create a new message to be sent to someone later
-
-POST /newsItem/create
-
-```JSON
-{"content": "Let's still be in touch"}
-```
-
-Responds with the NewsItem ID
-
+Responds with the ID of the subscriber who received the message
 
 #### List all messages sent to a given email address
 
 POST /subscriber/listMessages
+
+##### Parameters
+
+- email {String} The email address we want to retrieve messages for
 
 ```JSON
 {"email":"david.leonardi@gmail.com"}
